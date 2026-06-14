@@ -1,0 +1,9 @@
+@reference "tailwindcss";
+
+.header-title {
+  @apply text-2xl font-bold md:text-3xl tracking-tight text-slate-900;
+}
+
+.header-sub-title {
+  @apply mt-2 max-w-2xl text-sm text-slate-600 md:text-base;
+}
