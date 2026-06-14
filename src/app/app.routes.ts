@@ -13,15 +13,15 @@ export const routes: Routes = [
         (m) => m.FavouritesComponent,
       ),
   },
-  // {
-  //   path: 'photos/:id',
-  //   loadComponent: () =>
-  //     import('./features/photo-detail/photo-details.component').then(
-  //       (m) => m.PhotoDetailsComponent,
-  //     ),
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: '',
-  // },
+  {
+    path: 'photos/:id',
+    loadComponent: () =>
+      import('./features/photo-detail/photo-details.component').then(
+        (m) => m.PhotoDetailsComponent,
+      ),
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];

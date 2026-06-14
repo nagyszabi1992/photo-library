@@ -1,0 +1,9 @@
+@reference "tailwindcss";
+
+.favourite-photo-card {
+  @apply overflow-hidden rounded-2xl border-slate-200 bg-white shadow-sm p-4;
+}
+
+.favourite-photo-image {
+  @apply block h-auto w-full mx-auto max-w-sm;
+}
