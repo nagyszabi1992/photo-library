@@ -1,0 +1,12 @@
+@reference "tailwindcss";
+
+.message-container {
+  @apply flex items-center justify-center gap-3 p-6 rounded-2xl border;
+
+  &.info {
+    @apply border-sky-300 bg-sky-100 text-sky-900;
+  }
+  &.error {
+    @apply border-red-300 bg-red-100 text-red-900;
+  }
+}
