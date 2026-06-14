@@ -1,0 +1,24 @@
+<mat-card appearance="outlined" class="photo-card group">
+  <div class="image-container">
+    <img
+      class="image"
+      fill
+      sizes="(min-width: 64rem) 33vw, (min-width: 40rem) 33vw, 100vw"
+      [alt]="'common.photoAlt' | translate: { id: photo().id }"
+      [attr.loading]="priority() ? 'eager' : 'lazy'"
+      [ngSrc]="photo().url"
+      [priority]="priority()"
+    />
+    <div class="image-overlay-container">
+      <div class="image-overlay">
+        <div class="image-overlay-content">
+          <ng-content select="[photoCardOverlay]"></ng-content>
+        </div>
+      </div>
+    </div>
+
+    <div class="image-badge-container">
+      <ng-content select="[photoCardBadge]"></ng-content>
+    </div>
+  </div>
+</mat-card>
