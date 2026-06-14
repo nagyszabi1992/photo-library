@@ -1,0 +1,64 @@
+{
+  "app": {
+    "title": "Photo Library",
+    "nav": {
+      "ariaLabel": "Main navigation",
+      "photos": "Photos",
+      "favourites": "Favourites"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "photoAlt": "Photo {{id}}"
+  },
+  "home": {
+    "header": {
+      "title": "Photos",
+      "subTitle": "Click an image to add it to your favourites."
+    },
+    "loading": "Loading photos...",
+    "actions": {
+      "addToFavourites": "Add to favourites"
+    },
+    "aria": {
+      "addToFavourites": "Add {{id}} photo to favourites."
+    },
+    "error": {
+      "loadingFailed": "Failed to load photos. Please try again."
+    }
+  },
+  "favourites": {
+    "header": {
+      "title": "Favourites",
+      "subTitle": "Click a favourite photo to view details."
+    },
+    "empty": "You have no favourite photos.",
+    "loading": "Loading favourite photos...",
+    "actions": {
+      "viewDetails": "View details"
+    },
+    "aria": {
+      "viewDetails": "View {{id}} photo details."
+    }
+  },
+  "photoDetails": {
+    "header": {
+      "title": "Favourite photo details",
+      "subTitle": "You can check your favourite photo details or remove it from your favourites."
+    },
+    "notFound": "Photo not found.",
+    "loading": "Loading photo details...",
+    "photoAlt": "Photo {{id}}",
+    "label": {
+      "photoId": "Photo ID:",
+      "dimensions": "Dimensions:",
+      "added": "Added:"
+    },
+    "actions": {
+      "removeFromFavourites": "Remove from favourites"
+    },
+    "aria": {
+      "viewDetails": "View {{id}} photo details."
+    }
+  }
+}
