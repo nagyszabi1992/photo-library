@@ -4,7 +4,7 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
-@use "tailwindcss";
+@use 'tailwindcss';
 
 html {
   height: 100%;
@@ -20,6 +20,31 @@ html {
   );
 }
 
+:root {
+  --app-primary: #0866ff;
+  --app-on-primary: #ffffff;
+  --app-tertiary: #ff7a18;
+  --app-surface: #ffffff;
+  --app-on-surface: #0f2740;
+  --app-surface-container: #eef4ff;
+  --app-outline: #b6c3d8;
+
+  --mat-sys-primary: var(--app-primary);
+  --mat-sys-on-primary: var(--app-on-primary);
+  --mat-sys-tertiary: var(--app-tertiary);
+  --mat-sys-surface: var(--app-surface);
+  --mat-sys-on-surface: var(--app-on-surface);
+  --mat-sys-surface-container: var(--app-surface-container);
+  --mat-sys-outline: var(--app-outline);
+
+  --app-bg-start: #f7fbff;
+  --app-bg-end: #edf7ff;
+  --app-panel: var(--app-surface);
+  --app-muted-text: #4d6583;
+  --app-accent: var(--app-primary);
+  --app-accent-contrast: #052659;
+}
+
 body {
   // Default the application to a light color theme. This can be changed to
   // `dark` to enable the dark color theme, or to `light dark` to defer to the
@@ -32,9 +57,30 @@ body {
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
+  background-attachment: fixed;
 
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
 }
-/* You can add global styles to this file, and also import other style files */
+
+.active-nav-link {
+  background: color-mix(
+    in srgb,
+    var(--app-primary) 20%,
+    transparent
+  ) !important;
+  color: var(--app-accent-contrast) !important;
+  font-weight: 600 !important;
+}
+
+@keyframes page-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

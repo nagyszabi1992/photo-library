@@ -1,33 +1,46 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
+import {
+  initTranslateTesting,
+  translateTestingProviders,
+} from '../testing/translate-testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(() =>
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [AppComponent],
-    }),
-  );
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+      providers: [provideRouter([]), ...translateTestingProviders],
+    }).compileComponents();
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    initTranslateTesting();
   });
 
-  it(`should have as title 'gallery-template'`, () => {
+  it('creates the app shell', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('gallery-template');
+
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should render title', () => {
+  it('renders the title and top-level navigation', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'gallery-template app is running!',
+
+    const element = fixture.nativeElement as HTMLElement;
+    const navigationLinks = Array.from(element.querySelectorAll('nav a'));
+
+    expect(element.querySelector('.main-title')?.textContent).toContain(
+      'Photo Library',
     );
+    expect(navigationLinks.map((link) => link.textContent?.trim())).toEqual([
+      'Photos',
+      'Favourites',
+    ]);
+    expect(navigationLinks.map((link) => link.getAttribute('href'))).toEqual([
+      '/',
+      '/favourites',
+    ]);
+    expect(element.querySelectorAll('mat-toolbar').length).toBe(1);
+    expect(element.querySelector('router-outlet')).not.toBeNull();
   });
 });
