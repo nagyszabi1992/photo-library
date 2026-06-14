@@ -1,0 +1,52 @@
+<section class="space-y-4">
+  <app-page-header
+    [subTitle]="'home.header.subTitle' | translate"
+    [title]="'home.header.title' | translate"
+  ></app-page-header>
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    @for (photo of photos(); track photo.id; let index = $index) {
+      <button
+        class="group relative cursor-pointer"
+        type="button"
+        [attr.aria-label]="
+          'home.aria.addToFavourites' | translate: { id: photo.id }
+        "
+        (click)="addToFavourites(photo)"
+      >
+        <app-photo-card [photo]="photo" [priority]="index < 10">
+          @if (isFavourite(photo.id)) {
+            <span
+              class="favourite-photo-badge"
+              photoCardBadge
+              [animate.enter]="'badge-enter'"
+            >
+              <mat-icon>star</mat-icon></span
+            >
+          } @else {
+            <span
+              class="favourite-photo-overlay-badge"
+              photoCardOverlay
+              [animate.leave]="'overlay-leave'"
+            >
+              <mat-icon>star</mat-icon>
+              {{ 'home.actions.addToFavourites' | translate }}
+            </span>
+          }
+        </app-photo-card>
+      </button>
+    }
+  </div>
+
+  @if (error(); as message) {
+    <app-message type="error" [message]="message"></app-message>
+  }
+
+  @if (loading()) {
+    <app-loading-indicator
+      [label]="'home.loading' | translate"
+    ></app-loading-indicator>
+  }
+
+  <div #sentinel aria-hidden="true" class="sentinel"></div>
+</section>
