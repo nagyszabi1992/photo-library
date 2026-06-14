@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+
+.view-photo-overlay-badge {
+  @apply flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 font-semibold text-slate-900 shadow-lg;
+}

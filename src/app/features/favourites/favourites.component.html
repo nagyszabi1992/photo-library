@@ -1,0 +1,35 @@
+<section class="space-y-4">
+  <app-page-header
+    [subTitle]="'favourites.header.subTitle' | translate"
+    [title]="'favourites.header.title' | translate"
+  ></app-page-header>
+</section>
+@if (!ready()) {
+  <app-loading-indicator
+    [label]="'favourites.loading' | translate"
+  ></app-loading-indicator>
+} @else if (!favouritePhotos().length) {
+  <app-message
+    type="info"
+    [message]="'favourites.empty' | translate"
+  ></app-message>
+} @else {
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    @for (photo of favouritePhotos(); track photo.id) {
+      <a
+        class="group block"
+        [attr.aria-label]="
+          'favourites.aria.viewDetails' | translate: { id: photo.id }
+        "
+        [routerLink]="['/photos', photo.id]"
+      >
+        <app-photo-card [photo]="photo">
+          <span class="view-photo-overlay-badge" photoCardOverlay>
+            <mat-icon>visibility</mat-icon>
+            {{ 'favourites.actions.viewDetails' | translate }}
+          </span>
+        </app-photo-card>
+      </a>
+    }
+  </div>
+}
