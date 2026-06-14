@@ -6,9 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --watch=false",
+    "test:watch": "ng test",
+    "test:coverage": "ng test --watch=false --coverage",
     "prettier:check": "prettier --check .",
-    "prettier:apply": "prettier --write ."
+    "prettier:apply": "prettier --write .",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -18,24 +21,33 @@
     "@angular/compiler": "^22.0.1",
     "@angular/core": "^22.0.1",
     "@angular/forms": "^22.0.1",
+    "@angular/localize": "^22.0.1",
     "@angular/material": "^22.0.1",
     "@angular/platform-browser": "^22.0.1",
     "@angular/platform-browser-dynamic": "^22.0.1",
     "@angular/router": "^22.0.1",
+    "@ngx-translate/core": "^18.0.0",
+    "@ngx-translate/http-loader": "^18.0.0",
     "@tailwindcss/postcss": "^4.3.1",
     "postcss": "^8.5.15",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.3.1",
     "tslib": "^2.3.0",
+    "uuid": "^14.0.0",
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
     "@angular/build": "^22.0.1",
     "@angular/cli": "~22.0.1",
     "@angular/compiler-cli": "^22.0.1",
+    "@eslint/js": "^10.0.1",
     "@types/jasmine": "~4.3.0",
+    "@vitest/coverage-v8": "^4.1.8",
+    "angular-eslint": "22.0.0",
+    "eslint": "^10.3.0",
     "istanbul-lib-instrument": "^6.0.3",
     "jasmine-core": "~4.6.0",
+    "jsdom": "^29.1.1",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
@@ -43,6 +55,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "3.8.4",
     "typescript": "~6.0.3",
+    "typescript-eslint": "8.60.1",
     "vitest": "^4.0.8"
   }
 }
